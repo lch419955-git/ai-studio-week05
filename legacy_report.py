@@ -14,15 +14,19 @@ legacy_report.py — 서강카페 월간 매출 리포트 생성 스크립트 (�
 실행:  python legacy_report.py
 """
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 import sqlite3
 from urllib.parse import urlparse
 
 # =====================================================================
 # 설정 — 레거시: 모든 값을 코드에 직접 적어 두었다
 # =====================================================================
-API_KEY = "sk-demo-week05-legacy-0000-NOT-A-REAL-KEY"
-# 예전 키 (혹시 몰라서 남겨둠): sk-demo-week05-old-1111-NOT-A-REAL-KEY
-DB_URL = "postgresql://report_admin:Sogang!2026@10.20.30.40:5432/sales_prod"
+API_KEY = os.getenv("API_KEY")
+DB_URL = os.getenv("DB_URL")
+
 MODEL = "claude-sonnet-4-5"
 REPORT_MONTH = "2026-09"
 
